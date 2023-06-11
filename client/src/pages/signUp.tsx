@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react";
 import animation from "./signin-image.json";
+import Toast from "../components/toast";
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [img, setImg] = useState();
   const [name, setName] = useState("");
-
-  const postImg = () => {};
+  const [loading, setLoading] = useState(false);
+  const toastname: any = "Please fill all the fields";
+  const postImg = (pics: any) => {
+    setLoading(true);
+    if (pics === undefined) {
+      <Toast {...toastname} />;
+      return;
+    }
+  };
   const style = {
     height: 600,
     width: 600,
