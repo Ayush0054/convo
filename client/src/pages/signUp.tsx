@@ -61,7 +61,7 @@ function SignIn() {
                 accept="image/*"
                 value={img}
                 onChange={postImg}
-                className="block   focus:outline-none  p-2 m-3  text-sm   rounded-3xl cursor-pointer bg-gray-50 dark:text-gray-700  "
+                className="block   focus:outline-none  p-2 m-3  text-sm    cursor-pointer dark:text-gray-700  "
               />
 
               <button className=" bg-[#FD8D4E] m-5   rounded-lg p-2 drop-shadow-xl">
