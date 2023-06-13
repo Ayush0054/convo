@@ -1,10 +1,73 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react";
 import animation from "./login-image.json";
-
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!email || !password) {
+      toast("Please Select an Image!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setLoading(false);
+      return;
+    }
+
+    // console.log(email, password);
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(
+        "/api/user/login",
+        { email, password },
+        config
+      );
+
+      // console.log(JSON.stringify(data));
+      toast("Please Select an Image!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      navigate("/");
+    } catch (error) {
+      toast("Please Select an Image!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setLoading(false);
+    }
+  };
   const style = {
     height: 500,
     width: 500,
@@ -33,7 +96,10 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
               />
-              <button className=" bg-[#FD8D4E] m-5   rounded-lg  p-2 drop-shadow-xl">
+              <button
+                className=" bg-[#FD8D4E] m-5   rounded-lg  p-2 drop-shadow-xl"
+                onClick={submitHandler}
+              >
                 {" "}
                 Login
               </button>
