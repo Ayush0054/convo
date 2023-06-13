@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import Lottie from "lottie-react";
 import animation from "./signin-image.json";
 import Toast from "../components/toast";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function SignIn() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -10,13 +16,113 @@ function SignIn() {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const toastname: any = "Please fill all the fields";
-  const postImg = (pics: any) => {
+  const postImg = (pics: File): void => {
     setLoading(true);
     if (pics === undefined) {
+      toast("Please Select an Image!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
+    console.log(pics);
+    console.log(pics);
+
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      console.log("2", pics);
+      data.append("file", pics);
+      data.append("upload_preset", "convos");
+      data.append("cloud_name", "dkj0ybxnk");
+      fetch("https://api.cloudinary.com/v1_1/dkj0ybxnk/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setImg(data.url.toString());
+          console.log(data.url.toString());
+          console.log("hello");
+
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    } else {
       <Toast {...toastname} />;
+      setLoading(false);
       return;
     }
   };
+
+  const submitHandler = async () => {
+    setLoading(true);
+    // if (!name || !email || !password || !confirmPassword) {
+    //   toast("Please fill all the fields", {
+    //     position: "bottom-center",
+    //     autoClose: 5000,
+    //     hideProgressBar: true,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    //   setLoading(false);
+    //   console.log(loading);
+    //   return;
+    // }
+    // console.log(loading);
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "/api/user",
+        { name, email, password, img },
+        config
+      );
+      console.log(data);
+      toast("Account Created Successfully", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      navigate("/");
+    } catch (error) {
+      toast("Error Occured!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setLoading(false);
+    }
+  };
+
   const style = {
     height: 600,
     width: 600,
@@ -30,7 +136,11 @@ function SignIn() {
             <Lottie animationData={animation} style={style} className=" " />
           </div>
           <div className=" p-8 m-8">
-            <form action="" className=" grid max-w-xs  items-center  ">
+            <form
+              action=""
+              className=" grid max-w-xs  items-center  "
+              onSubmit={submitHandler}
+            >
               <h1 className="text-2xl">Name</h1>
               <input
                 type="text"
@@ -67,8 +177,8 @@ function SignIn() {
                 id="file_input"
                 type="file"
                 accept="image/*"
-                value={img}
-                onChange={postImg}
+                // onChange={postImg}
+                onChange={(e) => postImg(e.target.files![0])}
                 className="block   focus:outline-none  p-2 m-3  text-sm    cursor-pointer dark:text-gray-700  "
               />
 
