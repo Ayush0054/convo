@@ -4,14 +4,23 @@ import animation from "./login-image.json";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { LoginParams } from "../types/authTypes";
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginData, setLoginData] = useState<LoginParams>({
+    email: "",
+    password: "",
+  });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const submitHandler = async () => {
+  const handleInputChange = (field: string, value: string): void => {
+    setLoginData((prevData) => {
+      return { ...prevData, [field]: value };
+    });
+  };
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setLoading(true);
-    if (!email || !password) {
+    if (!loginData.email || !loginData.password) {
       toast("Please Select an Image!", {
         position: "bottom-center",
         autoClose: 5000,
@@ -35,8 +44,8 @@ function Login() {
       };
 
       const { data } = await axios.post(
-        "/api/user/login",
-        { email, password },
+        "http://localhost:5000/api/user/login",
+        { email: loginData.email, password: loginData.password },
         config
       );
 
@@ -81,25 +90,29 @@ function Login() {
             <Lottie animationData={animation} style={style} className=" " />
           </div>
           <div className=" p-10 mr-5">
-            <form action="" className=" grid max-w-xs  items-center  ">
+            <form
+              className=" grid max-w-xs  items-center  "
+              onSubmit={submitHandler}
+            >
               <h1 className="text-2xl">Email</h1>
               <input
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={loginData.email}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInputChange("email", e.target.value)
+                }
                 className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
               />
               <h1 className="text-2xl">Password</h1>
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={loginData.password}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInputChange("password", e.target.value)
+                }
                 className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
               />
-              <button
-                className=" bg-[#FD8D4E] m-5   rounded-lg  p-2 drop-shadow-xl"
-                onClick={submitHandler}
-              >
+              <button className=" bg-[#FD8D4E] m-5   rounded-lg  p-2 drop-shadow-xl">
                 {" "}
                 Login
               </button>
