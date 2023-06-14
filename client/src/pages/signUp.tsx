@@ -7,13 +7,22 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { SignupParams } from "../types/authTypes";
 function SignIn() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [img, setImg] = useState();
-  const [name, setName] = useState("");
+
+  const [signupData, setSignupData] = useState<SignupParams>({
+    name: "",
+    email: "",
+    img: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const handleInputChange = (field: string, value: string): void => {
+    setSignupData((prevData) => {
+      return { ...prevData, [field]: value };
+    });
+  };
   const [loading, setLoading] = useState(false);
   const toastname: any = "Please fill all the fields";
   const postImg = (pics: File): void => {
@@ -47,7 +56,7 @@ function SignIn() {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setImg(data.url.toString());
+          handleInputChange("img", data.url.toString());
           console.log(data.url.toString());
           console.log("hello");
 
@@ -64,25 +73,51 @@ function SignIn() {
     }
   };
 
-  const submitHandler = async () => {
-    setLoading(true);
-    // if (!name || !email || !password || !confirmPassword) {
-    //   toast("Please fill all the fields", {
-    //     position: "bottom-center",
-    //     autoClose: 5000,
-    //     hideProgressBar: true,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //   });
-    //   setLoading(false);
-    //   console.log(loading);
-    //   return;
-    // }
-    // console.log(loading);
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(
+      signupData.email,
+      signupData.password,
+      signupData.confirmPassword,
+      signupData.name,
+      signupData.img
+    );
 
+    setLoading(true);
+    if (
+      !signupData.name ||
+      !signupData.email ||
+      !signupData.password ||
+      !signupData.confirmPassword
+    ) {
+      toast("Please fill all the fields", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setLoading(false);
+      console.log(loading);
+      return;
+    }
+    console.log(loading);
+    if (signupData.password !== signupData.confirmPassword) {
+      toast("password do not match", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
     try {
       const config = {
         headers: {
@@ -90,11 +125,18 @@ function SignIn() {
         },
       };
       const { data } = await axios.post(
-        "/api/user",
-        { name, email, password, img },
+        "http://localhost:5000/api/user",
+        {
+          name: signupData.name,
+          email: signupData.email,
+          password: signupData.password,
+          img: signupData.img,
+        },
         config
       );
       console.log(data);
+      console.log("yoyo");
+
       toast("Account Created Successfully", {
         position: "bottom-center",
         autoClose: 5000,
@@ -109,6 +151,8 @@ function SignIn() {
       setLoading(false);
       navigate("/");
     } catch (error) {
+      console.log(error);
+
       toast("Error Occured!", {
         position: "bottom-center",
         autoClose: 5000,
@@ -137,37 +181,44 @@ function SignIn() {
           </div>
           <div className=" p-8 m-8">
             <form
-              action=""
               className=" grid max-w-xs  items-center  "
               onSubmit={submitHandler}
             >
               <h1 className="text-2xl">Name</h1>
               <input
                 type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={signupData.name}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInputChange("name", e.target.value)
+                }
                 className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
               />
               <h1 className="text-2xl">Email</h1>
               <input
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={signupData.email}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInputChange("email", e.target.value)
+                }
                 className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
               />
 
               <h1 className="text-2xl">Password</h1>
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={signupData.password}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInputChange("password", e.target.value)
+                }
                 className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
               />
               <h1 className="text-2xl">Confirm Password</h1>
               <input
                 type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={signupData.confirmPassword}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInputChange("confirmPassword", e.target.value)
+                }
                 className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
               />
 
@@ -178,7 +229,9 @@ function SignIn() {
                 type="file"
                 accept="image/*"
                 // onChange={postImg}
-                onChange={(e) => postImg(e.target.files![0])}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  postImg(e.target.files![0])
+                }
                 className="block   focus:outline-none  p-2 m-3  text-sm    cursor-pointer dark:text-gray-700  "
               />
 
