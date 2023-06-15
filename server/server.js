@@ -4,6 +4,7 @@ import { router } from "./routes/userRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 import dotenv from "dotenv";
+import { chatRoutes } from "./routes/chatRoutes.js";
 // const userRoutes = require("./routes/userRoutes");
 const app = express();
 app.use(express.json());
