@@ -13,9 +13,9 @@ console.log(connectDB());
 app.use(cors());
 
 app.options("*", cors());
-
+dotenv.config();
 app.use("/api/user", router);
-
+app.use("/api/chat", chatRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
