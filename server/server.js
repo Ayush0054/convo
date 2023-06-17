@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import { chatRoutes } from "./routes/chatRoutes.js";
 // const userRoutes = require("./routes/userRoutes");
 const app = express();
+dotenv.config();
 app.use(express.json());
 connectDB();
 console.log(connectDB());
@@ -14,7 +15,6 @@ console.log(connectDB());
 app.use(cors());
 
 app.options("*", cors());
-dotenv.config();
 app.use("/api/user", router);
 app.use("/api/chat", chatRoutes);
 app.use(notFound);
