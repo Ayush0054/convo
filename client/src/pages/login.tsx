@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react";
 import animation from "./login-image.json";
-import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { LoginParams } from "../types/authTypes";
@@ -21,16 +20,7 @@ function Login() {
     e.preventDefault();
     setLoading(true);
     if (!loginData.email || !loginData.password) {
-      toast("Please Select an Image!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      alert("Please Enter Email and Password");
       setLoading(false);
       return;
     }
@@ -50,30 +40,12 @@ function Login() {
       );
 
       // console.log(JSON.stringify(data));
-      toast("Please Select an Image!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      alert("Login Successfull");
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       navigate("/");
     } catch (error) {
-      toast("Please Select an Image!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      alert("Invalid Email or Password");
       setLoading(false);
     }
   };

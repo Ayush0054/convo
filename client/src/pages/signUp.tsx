@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Lottie from "lottie-react";
 import animation from "./signin-image.json";
 import Toast from "../components/toast";
-
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -28,16 +26,7 @@ function SignIn() {
   const postImg = (pics: File): void => {
     setLoading(true);
     if (pics === undefined) {
-      toast("Please Select an Image!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      alert("Please select an image");
       return;
     }
     console.log(pics);
@@ -90,32 +79,14 @@ function SignIn() {
       !signupData.password ||
       !signupData.confirmPassword
     ) {
-      toast("Please fill all the fields", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      alert("Please fill all the fields");
       setLoading(false);
       console.log(loading);
       return;
     }
     console.log(loading);
     if (signupData.password !== signupData.confirmPassword) {
-      toast("password do not match", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      alert("Passwords do not match");
       return;
     }
     try {
@@ -137,32 +108,14 @@ function SignIn() {
       console.log(data);
       console.log("yoyo");
 
-      toast("Account Created Successfully", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      alert("User Created");
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       navigate("/");
     } catch (error) {
       console.log(error);
 
-      toast("Error Occured!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      alert("User already exists");
       setLoading(false);
     }
   };
