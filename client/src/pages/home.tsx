@@ -1,9 +1,10 @@
 import React from "react";
+import Navbar from "../components/navbar";
 
 function Home() {
   return (
     <div className=" flex justify-center  text-cyan-900 ">
-      <h1>Convo</h1>
+      <Navbar />
     </div>
   );
 }
