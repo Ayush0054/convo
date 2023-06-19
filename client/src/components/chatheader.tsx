@@ -8,7 +8,7 @@ function Chatheader() {
         <div className=" shadow bg-[#fdf0ea] flex p-2 ">
           <input type="text" className="  " />
         </div>
-        <div className="shadow bg-[#FD8D4E]  m-2 ">
+        <div className="shadow bg-[#FD8D4E] p-2 m-2 ">
           <h1>create</h1>
         </div>
       </div>
