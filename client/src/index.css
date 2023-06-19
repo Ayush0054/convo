@@ -7,13 +7,17 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   color: rgba(17, 17, 17, 0.87);
   background-color: #fbf3ef;
-
+  /* color: #fbf3ef; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+.shadow {
+  box-shadow: 4px 4px 4px rgba(255, 185, 146, 0.67);
 }
