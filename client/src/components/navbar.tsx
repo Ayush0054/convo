@@ -11,7 +11,6 @@ function Navbar() {
         <h1 className=" text-3xl font-medium">Ayush</h1>
         <img src="" alt="your pic" />
         <h1 className=" text-3xl font-medium">logout</h1>
-        <h1 className=" text-3xl font-medium">create Group</h1>
       </div>
     </div>
   );
