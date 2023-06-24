@@ -11,7 +11,7 @@ interface ChatContextinterface {
   user: string;
   setUser: React.Dispatch<React.SetStateAction<string>> | undefined;
   search: boolean;
-  setSearch: React.Dispatch<React.SetStateAction<boolean>> | undefined;
+  setSearch: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const defaultState = {

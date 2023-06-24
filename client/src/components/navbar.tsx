@@ -4,7 +4,7 @@ import { ChatState } from "../context/chatProvider";
 import { useNavigate } from "react-router-dom";
 function Navbar() {
   const navigate = useNavigate();
-  // const { user } = ChatState();
+  const { user } = ChatState();
   const lougout = () => {
     localStorage.removeItem("userInfo");
     navigate("/");

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import plus from "./plus.png";
+import { ChatState } from "../context/chatProvider";
+
 function Chatheader() {
-  const [click, setClick] = useState(false);
+  const { search, setSearch } = ChatState();
+  const [click, setClick] = useState(search);
   const handleClick = () => {
     setClick(true);
-    console.log(click);
+    setSearch(click);
     if (click) {
       setClick(false);
     }
