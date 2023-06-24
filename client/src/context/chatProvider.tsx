@@ -30,7 +30,7 @@ const ChatProvider = ({ children }: ChildProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "");
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") as string);
     if (userInfo) {
       setUser(userInfo);
     } else {
