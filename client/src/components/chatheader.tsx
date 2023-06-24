@@ -1,23 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import plus from "./plus.png";
 function Chatheader() {
+  const [click, setClick] = useState(false);
+  const handleClick = () => {
+    setClick(true);
+    console.log(click);
+    if (click) {
+      setClick(false);
+    }
+  };
   return (
     <div className=" text-black flex m-5 justify-between">
       <div className=" flex items-center gap-3">
         <h1 className="text-5xl  ">Contacts</h1>
-        <button>
+        <button onClick={handleClick}>
           <img src={plus} alt="" />
         </button>
       </div>
-      <div className=" flex  items-center">
+      <form className=" flex  items-center">
         <input
           type="text"
           placeholder="Search/Add users to create group"
-          className="shadow bg-[#FBF3EF] flex p-2 outline-none w-[1000px]  "
+          className="shadow bg-[#fcefe9] flex p-2 outline-none w-[1000px]  "
         />
 
         <button className="shadow bg-[#FD8D4E] p-2 m-2 ">Create Group</button>
-      </div>
+      </form>
     </div>
   );
 }
