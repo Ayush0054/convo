@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Contact from "./contact";
 // import { ChatState } from "../context/chatProvider";
 
 function SearchContact() {
@@ -8,7 +9,8 @@ function SearchContact() {
 
   return (
     <div>
-      <input type="text" />
+      <input type="text" className=" bg-black" />
+      <Contact />
     </div>
   );
 }
