@@ -4,12 +4,14 @@ import Chatheader from "../components/chatheader";
 
 import ChatContact from "../components/chatContact";
 import ChatBox from "../components/chatBox";
+import SearchContact from "../components/searchContact";
 
 function Chat() {
   return (
     <div>
       <Navbar />
       <Chatheader />
+      <SearchContact />
       <div className="flex justify-between">
         <ChatContact />
         <ChatBox />
