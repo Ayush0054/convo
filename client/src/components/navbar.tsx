@@ -17,7 +17,11 @@ function Navbar() {
       </div>
       <div className=" flex  gap-10 items-center">
         <h1 className=" text-3xl font-medium">Ayush</h1>
-        <img src="" alt="your pic" />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcKoeGTG2evu2zrPJadEAHCnm7BK5AJynLIw8BpQzZ&s"
+          alt="your pic"
+          className=" max-h-10 rounded-full "
+        />
         <button onClick={lougout} className=" text-3xl font-medium">
           logout
         </button>
