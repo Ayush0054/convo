@@ -16,9 +16,9 @@ function Navbar() {
         <h1 className=" text-2xl font-semibold">CONVO</h1>
       </div>
       <div className=" flex  gap-10 items-center">
-        <h1 className=" text-3xl font-medium">Ayush</h1>
+        <h1 className=" text-3xl font-medium">{user.name}</h1>
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcKoeGTG2evu2zrPJadEAHCnm7BK5AJynLIw8BpQzZ&s"
+          src={user.picture}
           alt="your pic"
           className=" max-h-10 rounded-full "
         />
