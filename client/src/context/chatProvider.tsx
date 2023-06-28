@@ -8,10 +8,14 @@ import React, {
 import { useNavigate } from "react-router-dom";
 
 interface ChatContextinterface {
-  user: string;
+  user: any;
   setUser: React.Dispatch<React.SetStateAction<string>> | undefined;
   search: boolean;
   setSearch: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedChat: any;
+  setSelectedChat: React.Dispatch<React.SetStateAction<any>>;
+  chats: any;
+  setChats: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const defaultState = {
@@ -19,6 +23,10 @@ const defaultState = {
   setUser: (user: "") => {},
   search: false,
   setSearch: (search) => {},
+  selectedChat: null,
+  setSelectedChat: (selectedChat) => {},
+  chats: null,
+  setChats: (chats) => {},
 } as ChatContextinterface;
 
 type ChildProps = {
@@ -31,7 +39,20 @@ const searchContext = createContext(defaultState);
 const ChatProvider = ({ children }: ChildProps) => {
   const [user, setUser] = useState<string>(defaultState.user);
   const [search, setSearch] = useState<boolean>(defaultState.search);
-  const values = { user, setUser, search, setSearch };
+  const [selectedChat, setSelectedChat] = useState<any>(
+    defaultState.selectedChat
+  );
+  const [chats, setChats] = useState<any>(defaultState.chats);
+  const values = {
+    user,
+    setUser,
+    search,
+    setSearch,
+    selectedChat,
+    setSelectedChat,
+    chats,
+    setChats,
+  };
   const navigate = useNavigate();
 
   useEffect(() => {
