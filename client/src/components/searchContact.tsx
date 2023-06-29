@@ -38,7 +38,15 @@ function SearchContact() {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post("api/chat", { userId }, config);
+      const { data } = await axios.post(
+        `http://localhost:5000/api/chat/`,
+        { userId },
+        config
+      );
+      console.log(data);
+
+      if (!chats.find((c: any) => c._id === data._id))
+        setChats([data, ...chats]);
       setSelectedChat(data);
     } catch (error) {
       console.log(error);

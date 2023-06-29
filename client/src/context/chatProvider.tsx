@@ -25,7 +25,7 @@ const defaultState = {
   setSearch: (search) => {},
   selectedChat: null,
   setSelectedChat: (selectedChat) => {},
-  chats: null,
+  chats: [],
   setChats: (chats) => {},
 } as ChatContextinterface;
 
