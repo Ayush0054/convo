@@ -6,9 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SignupParams } from "../types/authTypes";
-function SignIn() {
+function SignUp() {
   const navigate = useNavigate();
-
+  const [pic, setPic] = useState();
   const [signupData, setSignupData] = useState<SignupParams>({
     name: "",
     email: "",
@@ -23,13 +23,13 @@ function SignIn() {
   };
   const [loading, setLoading] = useState(false);
   const toastname: any = "Please fill all the fields";
+
   const postImg = (pics: File): void => {
     setLoading(true);
     if (pics === undefined) {
       alert("Please select an image");
       return;
     }
-    console.log(pics);
     console.log(pics);
 
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
@@ -45,7 +45,8 @@ function SignIn() {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          handleInputChange("img", data.url.toString());
+          // handleInputChange("img", data.url.toString());
+          setPic(data.url.toString());
           console.log(data.url.toString());
           console.log("hello");
 
@@ -69,7 +70,8 @@ function SignIn() {
       signupData.password,
       signupData.confirmPassword,
       signupData.name,
-      signupData.img
+      signupData.img,
+      pic
     );
 
     setLoading(true);
@@ -81,10 +83,8 @@ function SignIn() {
     ) {
       alert("Please fill all the fields");
       setLoading(false);
-      console.log(loading);
       return;
     }
-    console.log(loading);
     if (signupData.password !== signupData.confirmPassword) {
       alert("Passwords do not match");
       return;
@@ -101,15 +101,15 @@ function SignIn() {
           name: signupData.name,
           email: signupData.email,
           password: signupData.password,
-          img: signupData.img,
+          picture: pic,
         },
         config
       );
       console.log(data);
-      console.log("yoyo");
 
       alert("User Created");
       localStorage.setItem("userInfo", JSON.stringify(data));
+      console.log("uploaded", data);
       setLoading(false);
       navigate("/");
     } catch (error) {
@@ -192,6 +192,15 @@ function SignIn() {
                 {" "}
                 SignUp
               </button>
+              <h1 className=" flex justify-center gap-2">
+                Already a user ?{" "}
+                <span
+                  className=" text-orange-600 cursor-pointer"
+                  onClick={() => navigate("/login")}
+                >
+                  login
+                </span>
+              </h1>
             </form>
           </div>
         </div>
@@ -200,4 +209,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;
