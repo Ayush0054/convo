@@ -43,7 +43,7 @@ function Login() {
       alert("Login Successfull");
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      navigate("/");
+      navigate("/chat");
     } catch (error) {
       alert("Invalid Email or Password");
       setLoading(false);
@@ -88,6 +88,15 @@ function Login() {
                 {" "}
                 Login
               </button>
+              <h1 className=" flex justify-center gap-2">
+                New user ?{" "}
+                <span
+                  className=" text-orange-600 cursor-pointer"
+                  onClick={() => navigate("/signup")}
+                >
+                  Signup
+                </span>
+              </h1>
             </form>
           </div>
         </div>

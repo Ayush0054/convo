@@ -13,7 +13,25 @@ function Home() {
       navigate("/chat");
     }
   }, [navigate]);
-  return <div className=" "></div>;
+  return (
+    <div className=" ">
+      Home
+      <div>
+        <button
+          onClick={() => navigate("/login")}
+          className=" bg-[#FD8D4E] m-5   rounded-lg  p-2 drop-shadow-xl"
+        >
+          Login
+        </button>
+        <button
+          onClick={() => navigate("/signup")}
+          className="  bg-[#fac8aa] m-5   rounded-lg  p-2 drop-shadow-xl"
+        >
+          Signup
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default Home;

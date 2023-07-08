@@ -62,7 +62,7 @@ const ChatProvider = ({ children }: ChildProps) => {
     } else {
       navigate("/login");
     }
-  }, [navigate]);
+  }, []);
 
   return <ChatContext.Provider value={values}>{children}</ChatContext.Provider>;
 };
