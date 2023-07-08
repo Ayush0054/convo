@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import { User } from "../model/userModel.js";
-// import dotenv from "dotenv";
+import dotenv from "dotenv";
 export const protect = asyncHandler(async (req, res, next) => {
   let token;
   if (

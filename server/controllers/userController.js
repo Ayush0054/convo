@@ -3,7 +3,7 @@ import { User } from "../model/userModel.js";
 import generateToken from "../config/generateToken.js";
 
 export const signUp = asyncHandler(async (req, res) => {
-  const { name, email, password, pic } = req.body;
+  const { name, email, password, picture } = req.body;
   if (!name || !email || !password) {
     res.status(400);
     throw new Error("please enter all the feilds");
@@ -18,14 +18,14 @@ export const signUp = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-    pic,
+    picture,
   });
   if (user) {
     res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
-      pic: user.pic,
+      picture: user.picture,
       token: generateToken(user._id),
     });
   } else {
@@ -42,7 +42,7 @@ export const login = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      pic: user.pic,
+      picture: user.picture,
       token: generateToken(user._id),
     });
   } else {
