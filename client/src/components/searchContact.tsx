@@ -17,6 +17,7 @@ function SearchContact() {
     try {
       const config = {
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
         },
       };
