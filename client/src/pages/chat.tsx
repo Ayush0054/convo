@@ -8,16 +8,19 @@ import SearchContact from "../components/searchContact";
 import { ChatState } from "../context/chatProvider";
 
 function Chat() {
-  const { search } = ChatState();
+  const [fetchAgain, setFetchAgain] = useState(false);
+  const { search, user } = ChatState();
 
   return (
     <div>
       <Navbar />
       <Chatheader />
-      <div className="flex justify-between">
-        {search ? <SearchContact /> : <ChatContact />}
-        <ChatBox />
-      </div>
+      {user && (
+        <div className="flex justify-between">
+          {search ? <SearchContact /> : <ChatContact fetchAgain={fetchAgain} />}
+          <ChatBox />
+        </div>
+      )}
     </div>
   );
 }
