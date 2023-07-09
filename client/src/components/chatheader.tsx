@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import plus from "./plus.png";
 import { ChatState } from "../context/chatProvider";
+import GroupChatModal from "./groupChatModal";
 
 function Chatheader() {
   const { search, setSearch } = ChatState();
@@ -26,8 +27,8 @@ function Chatheader() {
           placeholder="Search/Add users to create group"
           className="shadow bg-[#fcefe9] flex p-2 outline-none w-[1000px]  "
         />
-
-        <button className="shadow bg-[#FD8D4E] p-2 m-2 ">Create Group</button>
+        <GroupChatModal />
+        {/* <button className="shadow bg-[#FD8D4E] p-2 m-2 ">Create Group</button> */}
       </form>
     </div>
   );
