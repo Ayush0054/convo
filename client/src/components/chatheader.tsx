@@ -22,11 +22,11 @@ function Chatheader() {
         </button>
       </div>
       <form className=" flex  items-center">
-        <input
+        {/* <input
           type="text"
-          placeholder="Search/Add users to create group"
+          placeholder="Search in chat or group"
           className="shadow bg-[#fcefe9] flex p-2 outline-none w-[1000px]  "
-        />
+        /> */}
         <GroupChatModal />
         {/* <button className="shadow bg-[#FD8D4E] p-2 m-2 ">Create Group</button> */}
       </form>
