@@ -29,6 +29,7 @@ function SingleChat({
               <UpdateGroupChatModal
                 chat={selectedChat}
                 setFetchAgain={setFetchAgain}
+                fetchAgain={fetchAgain}
               />
             </div>
           )}
