@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import plus from "./plus.png";
 import { ChatState } from "../context/chatProvider";
-import GroupChatModal from "./groupChatModal";
+import GroupChatModal from "./modal/groupChatModal";
 
 function Chatheader() {
   const { search, setSearch } = ChatState();

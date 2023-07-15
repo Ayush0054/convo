@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Contact from "./contact";
+import Contact from "./userAvatar/contact";
 import { ChatState } from "../context/chatProvider";
 import axios from "axios";
-import ResultContact from "./resultContact";
+import ResultContact from "./userAvatar/resultContact";
 
 function SearchContact() {
   const [search, setSearch] = useState("");
