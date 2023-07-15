@@ -5,6 +5,7 @@ import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import { chatRoutes } from "./routes/chatRoutes.js";
+import { messageRoutes } from "./routes/messageRoutes.js";
 // const userRoutes = require("./routes/userRoutes");
 const app = express();
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(cors());
 app.options("*", cors());
 app.use("/api/user", router);
 app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
