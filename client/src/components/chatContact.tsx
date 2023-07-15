@@ -1,10 +1,10 @@
-import Contact from "./contact";
+import Contact from "./userAvatar/contact";
 import React, { useEffect, useState } from "react";
 import { ChatState } from "../context/chatProvider";
 import axios from "axios";
 import { getSender } from "../config/chatLogics";
 
-function ChatContact({ fetchAgain }) {
+function ChatContact({ fetchAgain }: { fetchAgain: any }) {
   const [loggedUser, setLoggedUser] = useState<any>({});
   const { user, selectedChat, setSelectedChat, chats, setChats, setSearch } =
     ChatState();

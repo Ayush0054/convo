@@ -3,7 +3,7 @@ import Navbar from "../components/navbar";
 import Chatheader from "../components/chatheader";
 
 import ChatContact from "../components/chatContact";
-import ChatBox from "../components/chatBox";
+import ChatBox from "../components/box/chatBox";
 import SearchContact from "../components/searchContact";
 import { ChatState } from "../context/chatProvider";
 
@@ -18,7 +18,7 @@ function Chat() {
       {user && (
         <div className="flex justify-between">
           {search ? <SearchContact /> : <ChatContact fetchAgain={fetchAgain} />}
-          <ChatBox />
+          <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
         </div>
       )}
     </div>
