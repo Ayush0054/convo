@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/navbar";
-
+import Lottie from "lottie-react";
+import animation from "./landing-anime.json";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
   const navigate = useNavigate();
-
+  const style = {
+    height: 600,
+    width: 600,
+  };
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo") as string);
 
@@ -14,21 +18,35 @@ function Home() {
     }
   }, [navigate]);
   return (
-    <div className=" ">
-      Home
-      <div>
-        <button
-          onClick={() => navigate("/login")}
-          className=" bg-[#FD8D4E] m-5   rounded-lg  p-2 drop-shadow-xl"
-        >
-          Login
-        </button>
-        <button
-          onClick={() => navigate("/signup")}
-          className="  bg-[#fac8aa] m-5   rounded-lg  p-2 drop-shadow-xl"
-        >
-          Signup
-        </button>
+    <div className=" bg-[#fce8dc] p-10 h-full ">
+      <h1 className=" text-9xl text-center">Convo</h1>
+      <div className=" flex justify-between m-36 gap-20">
+        <div>
+          <Lottie
+            animationData={animation}
+            style={style}
+            className=" flex items-center justify-center "
+          />
+        </div>
+        <div>
+          <h2 className="text-6xl pb-10 font-semibold">
+            Unlock Conversations,Elevate Connections
+            <span className="text-[#FD8D4E] "> Welcome to Convo,</span>
+            Where Dialogue Flourishes!
+          </h2>
+          <button
+            onClick={() => navigate("/login")}
+            className=" bg-[#FD8D4E] m-5 text-3xl  rounded-lg  p-4 drop-shadow-xl hover:shadow-lg"
+          >
+            Login
+          </button>
+          <button
+            onClick={() => navigate("/signup")}
+            className="  bg-[#fac8aa] m-5 text-3xl   rounded-lg  p-4 drop-shadow-xl hover:shadow-lg"
+          >
+            Signup
+          </button>
+        </div>
       </div>
     </div>
   );
