@@ -49,7 +49,7 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
               <img
                 src={chat.users[1].picture}
                 alt=""
-                className=" max-h-10 rounded-full "
+                className=" w-10 h-10 rounded-full"
               />
               <h1>
                 {" "}
