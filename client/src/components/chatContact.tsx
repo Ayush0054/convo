@@ -35,7 +35,7 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
     // eslint-disable-next-line
   }, [fetchAgain]);
   return (
-    <div>
+    <div className=" m-10">
       {chats ? (
         <div>
           {chats.map((chat: any) => (
@@ -44,31 +44,33 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
               onClick={() => setSelectedChat(chat)}
               className={`shadow-contact ${
                 selectedChat === chat ? "bg-[#fcc99f]" : "bg-[#fcefe9]"
-              } flex pl-5 pr-5 pt-2 pb-2 m-8 gap-5 hover:bg-[#f8d6ba] hover:shadow-xl`}
+              } flex pl-5 pr-5 pt-2 pb-2 m-8 w-full gap-5 hover:bg-[#f8d6ba] hover:shadow-xl`}
             >
               <img
                 src={chat.users[1].picture}
                 alt=""
                 className=" w-10 h-10 rounded-full"
               />
-              <h1>
-                {" "}
-                {!chat.isGroupChat
-                  ? getSender(loggedUser, chat.users)
-                  : chat.chatName}
-              </h1>
-              {chat.latestMessage && (
-                <div>
-                  <h1 className=" text-lg font-semibold text-[#FD8D4E]">
-                    {chat.latestMessage.sender.name} :
-                  </h1>
-                  <h2>
-                    {chat.latestMessage.content.length > 50
-                      ? chat.latestMessage.content.substring(0, 51) + "..."
-                      : chat.latestMessage.content}
-                  </h2>
-                </div>
-              )}
+              <div>
+                <h1 className=" text-2xl font-medium">
+                  {" "}
+                  {!chat.isGroupChat
+                    ? getSender(loggedUser, chat.users)
+                    : chat.chatName}
+                </h1>
+                {chat.latestMessage && (
+                  <div className=" flex items-center">
+                    <h1 className=" text-xl font-semibold text-[#FD8D4E]">
+                      {chat.latestMessage.sender.name}
+                    </h1>
+                    <h2 className=" p-2 text-lg font-semibold">
+                      {chat.latestMessage.content.length > 50
+                        ? chat.latestMessage.content.substring(0, 51) + "..."
+                        : chat.latestMessage.content}
+                    </h2>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
