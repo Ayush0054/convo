@@ -8,9 +8,11 @@ function UpdateGroupChatModal({
   chat,
   setFetchAgain,
   fetchAgain,
+  fetchMessages,
 }: {
   chat: any;
   setFetchAgain: any;
+  fetchMessages: any;
   fetchAgain: any;
 }) {
   const [showModal, setShowModal] = useState(false);
@@ -133,6 +135,7 @@ function UpdateGroupChatModal({
         ? setSelectedChat("")
         : setSelectedChat(data);
       setFetchAgain(!fetchAgain);
+      fetchMessages();
       setLoading(false);
     } catch (error) {
       console.log(error);

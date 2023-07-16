@@ -20,7 +20,7 @@ function Navbar() {
         <img
           src={user.picture}
           alt="your pic"
-          className=" max-h-10 rounded-full "
+          className=" w-10 h-10 rounded-full "
         />
         <button onClick={lougout} className=" text-3xl font-medium">
           logout

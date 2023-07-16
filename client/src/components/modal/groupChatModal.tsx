@@ -66,7 +66,7 @@ export default function GroupChatModal() {
         `http://localhost:5000/api/user?search=${search}`,
         config
       );
-      console.log(data);
+      // console.log(data);
 
       setLoading(false);
       setSearchResults(data);
