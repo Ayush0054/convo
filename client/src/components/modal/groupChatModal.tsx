@@ -44,10 +44,12 @@ export default function GroupChatModal() {
     );
   };
   const handleGroup = (userToAdd: any) => {
+    // @ts-ignore
     if (selectedUsers.includes(userToAdd)) {
       alert("user already added");
       return;
     }
+    // @ts-ignore
     setSelectedUsers([...selectedUsers, userToAdd]);
   };
   const handleSearch = async (query: any) => {

@@ -16,8 +16,6 @@ interface ChatContextinterface {
   setSelectedChat: React.Dispatch<React.SetStateAction<any>>;
   chats: any;
   setChats: React.Dispatch<React.SetStateAction<any>>;
-  notifications: any;
-  setNotifications: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const defaultState = {
@@ -29,8 +27,6 @@ const defaultState = {
   setSelectedChat: (selectedChat) => {},
   chats: [],
   setChats: (chats) => {},
-  notifications: [],
-  setNotifications: (notifications) => {},
 } as ChatContextinterface;
 
 type ChildProps = {
@@ -47,9 +43,7 @@ const ChatProvider = ({ children }: ChildProps) => {
     defaultState.selectedChat
   );
   const [chats, setChats] = useState<any>(defaultState.chats);
-  const [notifications, setNotifications] = useState<any>(
-    defaultState.notifications
-  );
+
   const values = {
     user,
     setUser,
@@ -59,8 +53,6 @@ const ChatProvider = ({ children }: ChildProps) => {
     setSelectedChat,
     chats,
     setChats,
-    notifications,
-    setNotifications,
   };
   const navigate = useNavigate();
 

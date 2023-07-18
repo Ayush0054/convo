@@ -4,7 +4,7 @@ import { getSender, getSenderFull } from "../../config/chatLogics";
 import ProfileModal from "../modal/profileModal";
 import UpdateGroupChatModal from "../modal/updateGroupChatModal";
 import Lottie from "lottie-react";
-import animation from "./chat-anime.json";
+import animation from "./message.json";
 import loadinganimation from "./loading.json";
 import sndbtn from "./Vector.png";
 import axios from "axios";
@@ -21,8 +21,8 @@ function SingleChat({
   setFetchAgain: any;
 }) {
   const style = {
-    height: 500,
-    width: 500,
+    height: 400,
+    width: 400,
   };
   const style2 = {
     height: 50,
@@ -31,13 +31,7 @@ function SingleChat({
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState();
-  const {
-    selectedChat,
-    user,
-    setSelectedChat,
-    setNotifications,
-    notifications,
-  } = ChatState();
+  const { selectedChat, user, setSelectedChat } = ChatState();
   const [socketConnected, setSocketConnected] = useState(false);
   const [typing, setTyping] = useState(false);
   const [istyping, setIstyping] = useState(false);
@@ -59,6 +53,7 @@ function SingleChat({
             Authorization: `Bearer ${user.token}`,
           },
         };
+        // @ts-ignore
         setNewMessage("");
         const { data } = await axios.post(
           "http://localhost:5000/api/message",
@@ -71,6 +66,7 @@ function SingleChat({
         console.log(data);
         socket.emit("new message", data);
         // setSelectedChat(selectedChat);
+        // @ts-ignore
         setMessages([...messages, data]);
       } catch (error) {
         console.log(error);
@@ -111,13 +107,8 @@ function SingleChat({
         !selectedChatCompare ||
         selectedChatCompare._id !== newMessageRecieved.chat._id
       ) {
-        if (!notifications.includes(newMessageRecieved)) {
-          setNotifications([...notifications, newMessageRecieved]);
-
-          console.log(notifications);
-          setFetchAgain(!fetchAgain);
-        }
       } else {
+        // @ts-ignore
         setMessages([...messages, newMessageRecieved]);
       }
     });

@@ -12,6 +12,7 @@ function ScrollableChat({ messages }: { messages: any }) {
   const { user } = ChatState();
   console.log(messages);
   return (
+    // @ts-ignore
     <ScrollableFeed className="no-scrollbar">
       {messages &&
         messages.map((m: any, i: any) => (
