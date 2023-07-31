@@ -16,7 +16,7 @@ function Chat() {
       <Navbar />
       <Chatheader />
       {user && (
-        <div className="flex justify-between">
+        <div className="flex justify-between ">
           {search ? <SearchContact /> : <ChatContact fetchAgain={fetchAgain} />}
           <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
         </div>

@@ -38,7 +38,7 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
     // eslint-disable-next-line
   }, [fetchAgain]);
   return (
-    <div className=" m-10">
+    <div className=" ">
       {loading ? (
         <h1>loading....</h1>
       ) : (
@@ -74,7 +74,7 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
                         </h1>
                         <h2 className=" p-2 text-lg font-semibold">
                           {chat.latestMessage.content.length > 50
-                            ? chat.latestMessage.content.substring(0, 51) +
+                            ? chat.latestMessage.content.substring(0, 20) +
                               "..."
                             : chat.latestMessage.content}
                         </h2>
