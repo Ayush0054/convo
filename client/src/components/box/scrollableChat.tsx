@@ -13,7 +13,7 @@ function ScrollableChat({ messages }: { messages: any }) {
   console.log(messages);
   return (
     // @ts-ignore
-    <ScrollableFeed className="no-scrollbar">
+    <ScrollableFeed className="no-scrollbar ">
       {messages &&
         messages.map((m: any, i: any) => (
           <div className=" flex items-center gap-1" key={m._id}>
@@ -43,9 +43,9 @@ function ScrollableChat({ messages }: { messages: any }) {
                 m.sender._id === user._id
                   ? "bg-[#FFFDFC] rounded-br-none "
                   : "bg-[#FD8D4E] rounded-bl-none"
-              } p-3 m-2 rounded-xl  `}
+              } p-3 m-2 rounded-xl break-normal `}
               style={{
-                maxWidth: "75%",
+                maxWidth: "50%",
                 marginLeft: isSameSenderMargin(messages, m, i, user._id),
                 marginTop: isSameUser(messages, m, i) ? 3 : 10,
               }}

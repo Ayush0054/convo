@@ -21,8 +21,8 @@ function SingleChat({
   setFetchAgain: any;
 }) {
   const style = {
-    height: 400,
-    width: 400,
+    height: 370,
+    width: 300,
   };
   const style2 = {
     height: 50,
@@ -133,10 +133,10 @@ function SingleChat({
     }, timerLength);
   };
   return (
-    <div className=" flex justify-center items-center text-center ">
+    <div className=" flex justify-center items-center text-center rounded-3xl ">
       {selectedChat ? (
         <div>
-          <div className="shadow bg-[#FBF3EF]">
+          <div className="shadow bg-[#FBF3EF] rounded-lg h-3/5">
             {!selectedChat.isGroupChat ? (
               <div className="flex justify-between  items-center p-3 border-b-2 border-gray-300">
                 <h1 className=" text-2xl uppercase font-semibold  ">
@@ -167,7 +167,7 @@ function SingleChat({
                 </div>
               ) : (
                 <div
-                  className=" flex object-contain   h-[470px]   "
+                  className=" flex object-contain   h-[370px]   "
                   style={{ scrollbarWidth: "none", flexDirection: "column" }}
                 >
                   <ScrollableChat messages={messages} />
@@ -199,9 +199,9 @@ function SingleChat({
               onChange={typingHandler}
               value={newMessage}
             />
-            <button>
+            {/* <button>
               <img src={sndbtn} alt="" className=" mt-5 " />
-            </button>
+            </button> */}
           </form>
         </div>
       ) : (
