@@ -60,7 +60,8 @@ const ChatProvider = ({ children }: ChildProps) => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo") as string);
     if (userInfo) {
       setUser(userInfo);
-    } else {
+    }
+    if (!userInfo) {
       navigate("/login");
     }
   }, []);

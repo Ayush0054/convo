@@ -44,6 +44,7 @@ function Login() {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       navigate("/chat");
+      window.location.reload();
     } catch (error) {
       alert("Invalid Email or Password");
       setLoading(false);
