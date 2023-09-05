@@ -25,7 +25,7 @@ export const signUp = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      picture: user.picture,
+      picture: user.picture || "https://cdn-icons-png.flaticon.com/512/6522/6522516.png",
       token: generateToken(user._id),
     });
   } else {

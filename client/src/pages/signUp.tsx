@@ -32,7 +32,7 @@ function SignUp() {
     }
     console.log(pics);
 
-    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+    if (pics.type === "image/jpeg" || pics.type === "image/png" ) {
       const data = new FormData();
       console.log("2", pics);
       data.append("file", pics);
@@ -108,7 +108,6 @@ function SignUp() {
       console.log(data);
 
       alert("User Created");
-      localStorage.setItem("userInfo", JSON.stringify(data));
       console.log("uploaded", data);
       setLoading(false);
       navigate("/");

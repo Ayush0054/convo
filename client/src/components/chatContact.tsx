@@ -69,10 +69,10 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
                     </h1>
                     {chat.latestMessage && (
                       <div className=" flex items-center">
-                        <h1 className=" text-xl font-semibold text-[#FD8D4E]">
-                          {chat.latestMessage.sender.name}
-                        </h1>
-                        <h2 className=" p-2 text-lg font-semibold">
+                        {/* <h1 className=" text-xl font-semibold text-[#FD8D4E]">
+                          {user==!chat.latestMessage.sender.name || chat.latestMessage.sender.name}
+                        </h1> */}
+                        <h2 className=" p-2 text-lg font-semibold text-[#FD8D4E]">
                           {chat.latestMessage.content.length > 50
                             ? chat.latestMessage.content.substring(0, 20) +
                               "..."

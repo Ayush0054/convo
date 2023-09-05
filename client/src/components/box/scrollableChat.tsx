@@ -20,14 +20,12 @@ function ScrollableChat({ messages }: { messages: any }) {
             {(isSameSender(messages, m, i, user._id) ||
               isLastMessage(messages, i, user._id)) && (
               <div>
-                <a href="">
                   <img
                     src={m.sender.picture}
                     // src="https://cdn.vox-cdn.com/thumbor/9TS9oKKcdKInFAHnWOOCE2qF8ng=/0x0:2864x1200/1400x1050/filters:focal(799x609:1257x1067):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/53591117/kongyell.0.jpg"
                     alt=""
                     className="my-anchor-element w-10 h-10 rounded-full "
                   />
-                </a>
                 <Tooltip
                   anchorSelect=".my-anchor-element"
                   place="left"
