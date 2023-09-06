@@ -173,6 +173,7 @@ function UpdateGroupChatModal({
                     <input
                       type="text"
                       className=" p-3 outline-orange-500 bg-orange-50 rounded-sm "
+                      placeholder="Enter Group Name"
                       onChange={(e) => setGroupName(e.target.value)}
                     />
                     <button

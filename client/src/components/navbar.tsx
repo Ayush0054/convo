@@ -4,6 +4,7 @@ import { ChatState } from "../context/chatProvider";
 import { useNavigate } from "react-router-dom";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Dropdown } from "rsuite";
+import UpdatePfp from "./modal/updatepfp";
 function Navbar() {
   const navigate = useNavigate();
   const { user } = ChatState();
@@ -19,11 +20,12 @@ function Navbar() {
       </div>
       <div className=" flex  gap-10 items-center">
         <h1 className=" text-4xl font-medium">{user.name}</h1>
-        <img
+        {/* <img
           src={user.picture}
           alt="your pic"
           className=" w-10 h-10 rounded-full "
-        />
+        /> */}
+        <UpdatePfp  />
         <button onClick={lougout} className=" text-4xl font-medium">
           Logout
         </button>

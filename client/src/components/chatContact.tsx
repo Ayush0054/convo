@@ -55,7 +55,7 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
                 >
                   {!chat.isGroupChat && (
                     <img
-                      src={chat.users[1].picture}
+                      src={chat.users[0].picture}
                       alt=""
                       className=" w-10 h-10 rounded-full"
                     />
