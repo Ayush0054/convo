@@ -52,12 +52,13 @@ function updatePfp() {
     console.log("pic", pic);
 
     setLoading(true);
+console.log(user._id);
 
     try {
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
-          "Content-type": "application/json",
+          // "Content-type": "application/json",
         },
       };
       const { data } = await axios.put(

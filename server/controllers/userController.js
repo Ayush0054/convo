@@ -66,12 +66,14 @@ export const allUsers = asyncHandler(async (req, res) => {
 });
 
 export const updatePhoto = asyncHandler(async (req, res) => {
-  const { userId } = req.body;
-  const updatedPic = await Chat.findByIdAndUpdate(
+  const { userId ,picture} = req.body;
+  console.log(userId);
+  const updatedPic = await User.findByIdAndUpdate(
     userId,
     { picture },
     { new: true }
-  ).populate("users", "-password")
+  )
+  console.log(updatedPic);
   if (!updatedPic) {
     return res.status(400).send({ message: "Chat not found" });
   } else {
