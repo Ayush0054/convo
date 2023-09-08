@@ -31,6 +31,8 @@ chat application made using mern stack
 # edit group chat
 ![Screenshot from 2023-08-17 01-09-46](https://github.com/Ayush0054/convo/assets/97244608/cfbf3d7b-73d6-4399-8e27-0f21ebf50eeb)
 
+# new ui
+![Alt text](image.png)
 
 
 
