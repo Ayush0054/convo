@@ -3,14 +3,16 @@ import { ChatState } from "../../context/chatProvider";
 import Toast from "../toast";
 import axios from "axios";
 
-function updatePfp() {
-  const { user } = ChatState();
+function updatePfp( {fetchAgain, setFetchAgain}: {fetchAgain: any, setFetchAgain: any}) {
+  const { user ,setUser} = ChatState();
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
   const [pic, setPic] = useState();
   const toastname: any = "Please fill all the fields";
   const postImg = (pics: File): void => {
     setLoading(true);
+    setButtonLoading(true);
     if (pics === undefined) {
       alert("Please select an image");
       return;
@@ -35,7 +37,7 @@ function updatePfp() {
           console.log(data.url.toString());
           console.log("hello");
 
-          setLoading(false);
+          setButtonLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -68,11 +70,14 @@ console.log(user._id);
         },
         config
       );
-      console.log(data);
+      setFetchAgain(!fetchAgain);
+    
+     console.log(data);
 
       alert("picture Created");
       console.log("uploaded", data);
       setLoading(false);
+      window.location.reload();
     } catch (error) {
       console.log(error);
 
@@ -107,10 +112,17 @@ console.log(user._id);
                       }
                       className="block   focus:outline-none  p-2 m-3  text-sm    cursor-pointer dark:text-gray-700  "
                     />
-                    <button className=" bg-[#FD8D4E] m-5   rounded-lg p-2 drop-shadow-xl">
+                    {buttonLoading ?
+                         <button className=" bg-[#FD8D4E] m-5   rounded-lg p-2 drop-shadow-xl" disabled>
+                         loading...
+                       </button>
+                       :
+
+                      <button className=" bg-[#FD8D4E] m-5   rounded-lg p-2 drop-shadow-xl">
                       {" "}
                       Update
                     </button>
+                    }
                   </form>
 
                   <button
