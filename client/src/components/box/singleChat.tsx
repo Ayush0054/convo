@@ -136,7 +136,7 @@ function SingleChat({
     <div className=" flex justify-center items-center text-center rounded-3xl ">
       {selectedChat ? (
         <div>
-          <div className=" border border-orange-300 bg-[#FBF3EF] rounded-lg h-3/5">
+          <div className=" border border-gray-300 bg-[#FBF3EF] rounded-lg h-3/5">
             {!selectedChat.isGroupChat ? (
               <div className="flex justify-between  items-center p-3 border-b-2 border-gray-300">
                 <h1 className=" text-2xl uppercase font-semibold  ">

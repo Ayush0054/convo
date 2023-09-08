@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ChatState } from "../context/chatProvider";
 import axios from "axios";
 import { getSender } from "../config/chatLogics";
+import ScrollableFeed from "react-scrollable-feed";
 
 function ChatContact({ fetchAgain }: { fetchAgain: any }) {
   const [loggedUser, setLoggedUser] = useState<any>({});
@@ -38,24 +39,27 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
     // eslint-disable-next-line
   }, [fetchAgain]);
   return (
-    <div className=" ">
+    <div className="  ">
       {loading ? (
         <h1>loading....</h1>
       ) : (
-        <div>
+        <div  className=" flex object-contain h-[650px]  mb-5     "
+        style={{ scrollbarWidth: "none", flexDirection: "column" }} >
           {chats ? (
-            <div>
+              // @ts-ignore
+            <ScrollableFeed className="no-scrollbar" >
+               
               {chats.map((chat: any) => (
                 <div
                   key={chat._id}
                   onClick={() => setSelectedChat(chat)}
-                  className={`shadow-contact ${
+                  className={` rounded-xl border border-gray-300 ${
                     selectedChat === chat ? "bg-[#fcc99f]" : "bg-[#fcefe9]"
-                  } flex pl-5 pr-5 pt-2 pb-2 m-8 w-full gap-5 hover:bg-[#f8d6ba] hover:shadow-xl`}
+                  } flex pl-5 pr-5 pt-2 pb-2 mt-5 mb-5  w-full gap-5 hover:bg-[#f8d6ba] `}
                 >
                   {!chat.isGroupChat && (
                     <img
-                      src={chat.users[0].picture}
+                      src={chat.users[1].picture}
                       alt=""
                       className=" w-10 h-10 rounded-full"
                     />
@@ -83,7 +87,7 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
                   </div>
                 </div>
               ))}
-            </div>
+            </ScrollableFeed>
           ) : (
             <div>no chats</div>
           )}

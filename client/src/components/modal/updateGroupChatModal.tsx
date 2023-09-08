@@ -144,7 +144,7 @@ function UpdateGroupChatModal({
   return (
     <>
       <button
-        className="shadow bg-[#FD8D4E] p-2 m-2 hover:shadow-lg"
+        className="rounded-lg border border-gray-300 bg-[#FD8D4E] p-2 m-2 "
         onClick={() => setShowModal(true)}
       >
         {" "}

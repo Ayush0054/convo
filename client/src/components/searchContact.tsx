@@ -3,6 +3,7 @@ import Contact from "./userAvatar/contact";
 import { ChatState } from "../context/chatProvider";
 import axios from "axios";
 import ResultContact from "./userAvatar/resultContact";
+import ScrollableFeed from "react-scrollable-feed";
 
 function SearchContact() {
   const [search, setSearch] = useState("");
@@ -54,8 +55,8 @@ function SearchContact() {
     }
   };
   return (
-    <div className=" m-8">
-      <div className=" flex gap-5">
+    <div className="   ">
+      <div className=" flex gap-5 ">
         <input
           type="text"
           className="shadow bg-[#fcefe9] flex p-2 outline-none   "
@@ -64,17 +65,25 @@ function SearchContact() {
             setSearch(e.target.value)
           }
         />
-        <button onClick={handleSearch} className="shadow bg-[#FD8D4E] p-2 m-2 ">
+        <button onClick={handleSearch} className="rounded-lg border border-gray-300 bg-[#FD8D4E] p-2 m-2 ">
           Search
         </button>
       </div>
-      {searchResults?.map((user: any) => (
-        <ResultContact
-          key={user._id}
-          user={user}
-          handleFunction={() => accessChat(user._id)}
-        />
-      ))}
+      <div
+        className=" flex object-contain h-[650px]     "
+        style={{ scrollbarWidth: "none", flexDirection: "column" }}
+      >
+        
+        <ScrollableFeed className="no-scrollbar">
+          {searchResults?.map((user: any) => (
+            <ResultContact
+              key={user._id}
+              user={user}
+              handleFunction={() => accessChat(user._id)}
+            />
+          ))}
+        </ScrollableFeed>
+      </div>
     </div>
   );
 }

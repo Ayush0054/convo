@@ -14,7 +14,7 @@ function Chatheader() {
     }
   };
   return (
-    <div className=" text-black flex m-5 justify-between">
+    <div className=" text-black flex mt-5 mb-5 justify-between">
       <div className=" flex items-center gap-3">
         <h1 className="text-5xl  ">Contacts</h1>
         <button onClick={handleClick}>

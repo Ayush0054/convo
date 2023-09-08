@@ -23,8 +23,8 @@
 
   /* color-scheme: light dark; */
   color: rgba(17, 17, 17, 0.87);
-  /* background-color: #fcefe9; */
-  background-color: #fffdfc;
+  background-color: #ffffff;
+  /* background-color: #fffdfc; */
   /* color: #fbf3ef; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,7 +32,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+body{
+  margin:30px;
+}
 .shadow {
   box-shadow: 4px 4px 4px rgba(255, 185, 146, 0.67);
 }
