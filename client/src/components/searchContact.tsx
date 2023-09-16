@@ -54,12 +54,13 @@ function SearchContact() {
       console.log(error);
     }
   };
+
   return (
     <div className="   ">
       <div className=" flex gap-5 ">
         <input
           type="text"
-          className="shadow bg-[#fcefe9] flex p-2 outline-none   "
+          className="shadow bg-[#fcefe9] flex p-2 outline-none w-48 md:w-full    "
           value={search}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setSearch(e.target.value)
@@ -73,7 +74,7 @@ function SearchContact() {
         className=" flex object-contain h-[650px]     "
         style={{ scrollbarWidth: "none", flexDirection: "column" }}
       >
-        
+      
         <ScrollableFeed className="no-scrollbar">
           {searchResults?.map((user: any) => (
             <ResultContact

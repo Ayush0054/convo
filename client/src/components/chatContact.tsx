@@ -5,7 +5,7 @@ import axios from "axios";
 import { getSender } from "../config/chatLogics";
 import ScrollableFeed from "react-scrollable-feed";
 
-function ChatContact({ fetchAgain }: { fetchAgain: any }) {
+function ChatContact({ fetchAgain }: { fetchAgain: any}) {
   const [loggedUser, setLoggedUser] = useState<any>({});
   const [loading, setLoading] = useState(false);
   const { user, selectedChat, setSelectedChat, chats, setChats, setSearch } =
@@ -38,12 +38,16 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
     fetchChats();
     // eslint-disable-next-line
   }, [fetchAgain]);
+  const handleClick = (chat:any) => {
+    setSelectedChat(chat);
+    // showContact(false);
+  }
   return (
     <div className="  ">
       {loading ? (
         <h1>loading....</h1>
       ) : (
-        <div  className=" flex object-contain h-[650px]  mb-5     "
+        <div  className=" flex object-contain h-[650px]  mb-5      "
         style={{ scrollbarWidth: "none", flexDirection: "column" }} >
           {chats ? (
               // @ts-ignore
@@ -52,16 +56,16 @@ function ChatContact({ fetchAgain }: { fetchAgain: any }) {
               {chats.map((chat: any) => (
                 <div
                   key={chat._id}
-                  onClick={() => setSelectedChat(chat)}
+                  onClick={() => handleClick(chat)}
                   className={` rounded-xl border border-gray-300 ${
-                    selectedChat === chat ? "bg-[#fcc99f]" : "bg-[#fcefe9]"
+                    selectedChat === chat ? "bg-[#fcc99f] " : "bg-[#fcefe9]"
                   } flex pl-5 pr-5 pt-2 pb-2 mt-5 mb-5  w-full gap-5 hover:bg-[#f8d6ba] `}
                 >
                   {!chat.isGroupChat && (
                     <img
                       src={chat.users[1].picture}
                       alt=""
-                      className=" w-10 h-10 rounded-full"
+                      className="hidden md:block w-10 h-10 rounded-full "
                     />
                   )}
                   <div>

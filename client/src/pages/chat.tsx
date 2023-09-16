@@ -11,13 +11,20 @@ function Chat() {
   const [fetchAgain, setFetchAgain] = useState(false);
   const { search, user } = ChatState();
 
+
   return (
-    <div>
+    <div className="   ">
       <Navbar fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
-      <Chatheader />
+      <Chatheader  />
       {user && (
-        <div className="flex justify-between ">
-          {search ? <SearchContact /> : <ChatContact fetchAgain={fetchAgain} />}
+        <div className=" grid justify-items-center place-items-center  md:flex md:justify-between ">
+       
+
+          
+
+          {search ? <SearchContact /> : <ChatContact fetchAgain={fetchAgain}  />}
+      
+        
           <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
         </div>
       )}

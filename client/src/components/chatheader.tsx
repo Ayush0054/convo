@@ -13,14 +13,16 @@ function Chatheader() {
       setClick(false);
     }
   };
+
   return (
     <div className=" text-black flex mt-5 mb-5 justify-between">
       <div className=" flex items-center gap-3">
-        <h1 className="text-5xl  ">Contacts</h1>
+        <h1 className="hidden md:block text-5xl  ">Contacts</h1>
         <button onClick={handleClick}>
           <img src={plus} alt="" />
         </button>
       </div>
+      
       <form className=" flex  items-center">
         {/* <input
           type="text"
