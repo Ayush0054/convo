@@ -24,6 +24,10 @@ function UpdateGroupChatModal({
   const { user, chats, setSelectedChat, selectedChat } = ChatState();
 
   const handleRename = async () => {
+    if(selectedChat.groupAdmin._id !== user._id){
+      alert("only admin can rename");
+      return;
+    }
     if (!groupName) {
       alert("please enter group name");
       return;
@@ -131,7 +135,7 @@ function UpdateGroupChatModal({
         },
         config
       );
-      user._id === userToRemove._id
+      userToRemove._id ===   user._id
         ? setSelectedChat("")
         : setSelectedChat(data);
       setFetchAgain(!fetchAgain);
@@ -155,7 +159,8 @@ function UpdateGroupChatModal({
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-10">
-                <h1>{selectedChat.chatName}</h1>
+                <h1 className="  font-bold"> Group Name: {selectedChat.chatName}</h1>
+                <h1 className=" text-orange-500 font-semibold"> Group Admin: {selectedChat.groupAdmin.name}</h1>
                 <div className=" flex justify-center">
                   {selectedChat.users.map((u: any) => (
                     <div className=" flex flex-wrap justify-center items-center">

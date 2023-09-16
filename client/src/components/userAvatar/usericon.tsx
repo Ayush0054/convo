@@ -10,10 +10,10 @@ function UserIcon({
   return (
     <div
       className=" px-3 py-1.5 rounded-lg m-1 mb-2 cursor-pointer bg-orange-50 flex justify-center items-center gap-2 "
-      onClick={handleFunction}
+     
     >
       {user.name}
-      <button className=" text-x">X</button>
+      <button className=" text-x"  onClick={handleFunction}>X</button>
     </div>
   );
 }
