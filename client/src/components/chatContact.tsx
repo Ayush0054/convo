@@ -20,7 +20,7 @@ function ChatContact({ fetchAgain }: { fetchAgain: any}) {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:5000/api/chat/`,
+        `https://convo-aoru.onrender.com/api/chat/`,
         config
       );
       console.log(data);

@@ -40,7 +40,7 @@ function UpdateGroupChatModal({
         },
       };
       const { data } = await axios.put(
-        `http://localhost:5000/api/chat/rename`,
+        `https://convo-aoru.onrender.com/api/chat/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupName,
@@ -128,7 +128,7 @@ function UpdateGroupChatModal({
         },
       };
       const { data } = await axios.put(
-        "http://localhost:5000/api/chat/groupremove",
+        "https://convo-aoru.onrender.com/api/chat/groupremove",
         {
           chatId: selectedChat._id,
           userId: userToRemove._id,
@@ -145,6 +145,74 @@ function UpdateGroupChatModal({
       console.log(error);
     }
   };
+  // const handleDelete = async () => {
+  //     if( selectedChat.groupAdmin._id !== user._id ){
+  //         alert("only admin can delete group");
+  //         return;
+  //     }
+  //     try{
+  //       setLoading(true);
+  //       const config = {
+  //         headers: {
+  //           Authorization: `Bearer ${user.token}`,
+  //         },
+  //       };
+  //       const { data } = await axios.put(
+  //         "http://localhost:5000/api/chat/deletegroup",
+  //         {
+  //           chatId: selectedChat._id
+  //         },
+  //         config
+  //       );
+  //       setSelectedChat(data)
+  //       setFetchAgain(!fetchAgain);
+  //       setShowModal(false);
+  //       setLoading(false);
+  //     }catch (error) {
+  //       console.log(error);
+  //     }
+  // }
+  // const handleDelete = async () => {
+  //   if (selectedChat.groupAdmin._id !== user._id) {
+  //     alert("Only admin can delete the group");
+  //     return;
+  //   }
+  
+  //   try {
+  //     setLoading(true);
+  //     const config = {
+  //       headers: {
+  //         Authorization: `Bearer ${user.token}`,
+  //       },
+  //     };
+  
+  //     // Make a DELETE request to your server API
+  //     const response = await axios.delete(
+  //       `http://localhost:5000/api/chat/deletegroup`,
+  //       {
+  //         headers: config.headers,
+  //         data: {
+  //           chatId: selectedChat._id, // Send chatId in the request body
+  //         },
+  //       }
+  //     );
+  
+  //     // Handle the response from the server
+
+  //       setSelectedChat(null);  
+  //       setFetchAgain(!fetchAgain); 
+  //       setShowModal(false); 
+    
+
+  //       console.log(response.data); 
+  
+  
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error(error);
+
+  //   }
+  // }
   return (
     <>
       <button
@@ -218,6 +286,16 @@ function UpdateGroupChatModal({
                 >
                   Leave Group
                 </button>
+                {/* {
+                  selectedChat.groupAdmin._id === user._id &&
+
+                  <button
+                  onClick={() => handleDelete()}
+                  className="  bg-[#be3725] p-2 m-2 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  >
+                 Delete Group
+                </button>
+                } */}
                 <button
                   className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"

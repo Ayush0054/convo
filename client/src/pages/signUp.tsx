@@ -96,7 +96,7 @@ function SignUp() {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/user",
+        "https://convo-aoru.onrender.com/api/user",
         {
           name: signupData.name,
           email: signupData.email,

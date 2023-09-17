@@ -11,7 +11,7 @@ import axios from "axios";
 import ScrollableChat from "./scrollableChat";
 import { io } from "socket.io-client";
 // @ts-ignore
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://convo-aoru.onrender.com";
 var socket: any, selectedChatCompare: any;
 function SingleChat({
   fetchAgain,
@@ -56,7 +56,7 @@ function SingleChat({
         // @ts-ignore
         setNewMessage("");
         const { data } = await axios.post(
-          "http://localhost:5000/api/message",
+          "https://convo-aoru.onrender.com/api/message",
           {
             content: newMessage,
             chatId: selectedChat._id,
@@ -84,7 +84,7 @@ function SingleChat({
       };
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:5000/api/message/${selectedChat._id}`,
+        `https://convo-aoru.onrender.com/api/message/${selectedChat._id}`,
         config
       );
       console.log(messages);

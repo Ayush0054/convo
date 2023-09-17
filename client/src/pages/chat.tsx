@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import Chatheader from "../components/chatheader";
 
-import ChatContact from "../components/chatContact";
+import ChatContact  from "../components/chatContact";
 import ChatBox from "../components/box/chatBox";
 import SearchContact from "../components/searchContact";
 import { ChatState } from "../context/chatProvider";

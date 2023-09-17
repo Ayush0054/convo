@@ -23,7 +23,7 @@ function SearchContact() {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `https://convo-aoru.onrender.com/api/user?search=${search}`,
         config
       );
       setSearchResults(data);
@@ -41,7 +41,7 @@ function SearchContact() {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat/`,
+        `https://convo-aoru.onrender.com/api/chat/`,
         { userId },
         config
       );

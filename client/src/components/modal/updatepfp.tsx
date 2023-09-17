@@ -64,7 +64,7 @@ console.log(user._id);
         },
       };
       const { data } = await axios.put(
-        "http://localhost:5000/api/user/updatephoto",
+        "https://convo-aoru.onrender.com/api/user/updatephoto",
         { userId: user._id,
           picture: pic,
         },

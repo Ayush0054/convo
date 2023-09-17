@@ -25,7 +25,7 @@ export default function GroupChatModal() {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat/group`,
+        `https://convo-aoru.onrender.com/api/chat/group`,
         {
           name: groupName,
           users: JSON.stringify(selectedUsers.map((u: any) => u._id)),
@@ -65,7 +65,7 @@ export default function GroupChatModal() {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `https://convo-aoru.onrender.com/api/user?search=${search}`,
         config
       );
       // console.log(data);
