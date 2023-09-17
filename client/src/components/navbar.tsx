@@ -2,8 +2,6 @@ import React from "react";
 import logo from "./logo.png";
 import { ChatState } from "../context/chatProvider";
 import { useNavigate } from "react-router-dom";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import { Dropdown } from "rsuite";
 import UpdatePfp from "./modal/updatepfp";
 function Navbar({ fetchAgain, setFetchAgain }: { fetchAgain: any; setFetchAgain: any;}) {
   const navigate = useNavigate();
