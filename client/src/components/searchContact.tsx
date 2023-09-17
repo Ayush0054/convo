@@ -74,16 +74,18 @@ function SearchContact() {
         className=" flex object-contain h-[650px]     "
         style={{ scrollbarWidth: "none", flexDirection: "column" }}
       >
-      
-        <ScrollableFeed className="no-scrollbar">
+         {
+            // @ts-ignore
+           <ScrollableFeed className="no-scrollbar">
           {searchResults?.map((user: any) => (
             <ResultContact
               key={user._id}
               user={user}
               handleFunction={() => accessChat(user._id)}
             />
-          ))}
+            ))}
         </ScrollableFeed>
+    }
       </div>
     </div>
   );

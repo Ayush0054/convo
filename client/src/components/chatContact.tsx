@@ -50,8 +50,8 @@ function ChatContact({ fetchAgain }: { fetchAgain: any}) {
         <div  className=" flex object-contain h-[650px]  mb-5      "
         style={{ scrollbarWidth: "none", flexDirection: "column" }} >
           {chats ? (
-              // @ts-ignore
-            <ScrollableFeed className="no-scrollbar" >
+                  // @ts-ignore
+            <ScrollableFeed className="no-scrollbar " >
                
               {chats.map((chat: any) => (
                 <div
