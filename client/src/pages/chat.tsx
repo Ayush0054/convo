@@ -13,7 +13,7 @@ function Chat() {
 
 
   return (
-    <div className=" p-8 bg-orange-50">
+    <div className=" m-4 p-4 bg-orange-50 shadow-2xl">
       <Navbar fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
       <Chatheader  />
       {user && (
