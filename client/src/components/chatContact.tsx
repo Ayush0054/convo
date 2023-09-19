@@ -59,17 +59,17 @@ function ChatContact({ fetchAgain }: { fetchAgain: any}) {
                   onClick={() => handleClick(chat)}
                   className={` rounded-xl border border-gray-300 ${
                     selectedChat === chat ? "bg-[#fcc99f] " : "bg-[#fcefe9]"
-                  } flex pl-5 pr-5 pt-2 pb-2 mt-5 mb-5  w-full gap-5 hover:bg-[#f8d6ba] `}
+                  } flex md:pl-5 pl-2 pr-2 md:pr-5 pt-2 pb-2 md:mt-5 md:mb-5 mt-2 mb-2  w-full gap-5 hover:bg-[#f8d6ba] `}
                 >
                   {!chat.isGroupChat && (
                     <img
-                      src={chat.users[1].picture}
+                      src={chat.users[0].picture}
                       alt=""
-                      className="hidden md:block w-10 h-10 rounded-full "
+                      className="block w-8 h-8  md:w-10 md:h-10 rounded-full "
                     />
                   )}
                   <div>
-                    <h1 className=" text-2xl font-medium">
+                    <h1 className=" text-lg font-normal md:text-2xl md:font-medium">
                       {" "}
                       {!chat.isGroupChat
                         ? getSender(loggedUser, chat.users)
@@ -80,7 +80,7 @@ function ChatContact({ fetchAgain }: { fetchAgain: any}) {
                         {/* <h1 className=" text-xl font-semibold text-[#FD8D4E]">
                           {user==!chat.latestMessage.sender.name || chat.latestMessage.sender.name}
                         </h1> */}
-                        <h2 className=" p-2 text-lg font-semibold text-[#FD8D4E]">
+                        <h2 className=" p-1 text-md md:p-2 md:text-lg font-semibold text-[#FD8D4E]">
                           {chat.latestMessage.content.length > 50
                             ? chat.latestMessage.content.substring(0, 20) +
                               "..."

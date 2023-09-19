@@ -21,12 +21,12 @@ function SingleChat({
   setFetchAgain: any;
 }) {
   const style = {
-    height: 370,
-    width: 300,
+    height: 300,
+    width: 250,
   };
   const style2 = {
-    height: 50,
-    width: 50,
+    height: 30,
+    width: 30,
   };
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -139,7 +139,7 @@ function SingleChat({
           <div className=" border border-gray-300 bg-[#FBF3EF] rounded-lg h-3/5">
             {!selectedChat.isGroupChat ? (
               <div className="flex justify-between  items-center p-3 border-b-2 border-gray-300">
-                <h1 className=" text-2xl uppercase font-semibold  ">
+                <h1 className=" text-lg font-medium md:text-2xl uppercase md:font-semibold  ">
                   {getSender(user, selectedChat.users)}
                 </h1>
                 <ProfileModal user={getSenderFull(user, selectedChat.users)} />
@@ -189,18 +189,18 @@ function SingleChat({
           </div>
           <form
             onKeyDown={sendMessage}
-            onClick={sendMessage}
+            
             className=" flex justify-between items-center gap-5"
           >
             <input
               type="text"
-              className="shadow bg-[#fcefe9] mt-5 flex p-5 outline-none w-[1000px]  "
+              className="shadow bg-[#fcefe9] mt-5 flex p-5 outline-none md:w-[1500px]  "
               placeholder="Enter a Message"
               onChange={typingHandler}
               value={newMessage}
             />
-            {/* <button>
-              <img src={sndbtn} alt="" className=" mt-5 " />
+            {/* <button onClick={()=>sendMessage} >
+              <img src={sndbtn} alt="" className=" h-10 mt-5 " />
             </button> */}
           </form>
         </div>

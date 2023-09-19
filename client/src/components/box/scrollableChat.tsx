@@ -13,7 +13,7 @@ function ScrollableChat({ messages }: { messages: any }) {
   console.log(messages);
   return (
     // @ts-ignore
-    <ScrollableFeed className="no-scrollbar ">
+    <ScrollableFeed className="no-scrollbar  ">
       {messages &&
         messages.map((m: any, i: any) => (
           <div className=" flex items-center gap-1" key={m._id}>

@@ -5,7 +5,7 @@ function ProfileModal({ user }: { user: any }) {
   return (
     <>
       <img
-        className="max-w-20 max-h-20 rounded-lg"
+        className=" max-w-10 max-h-10 md:max-w-20 md:max-h-20 rounded-lg"
         src={user.picture}
         onClick={() => setShowModal(true)}
       ></img>
