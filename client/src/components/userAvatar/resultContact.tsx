@@ -14,10 +14,10 @@ function ResultContact({
     setSearch(false);
   };
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} className="">
       <div
         onClick={handleFunction}
-        className=" rounded-xl border border-gray-300 bg-[#fcefe9] flex pl-5 pr-5 pt-2 pb-2 mt-8 mb-8  gap-5 hover:bg-[#f8d6ba] "
+        className=" rounded-xl border border-gray-300 bg-[#fcefe9] flex pl-5 pr-5 pt-2 pb-2 mt-8 mb-8  gap-3 hover:bg-[#f8d6ba] "
       >
         <img src={user.picture} alt="hi" className=" hidden md:block w-10 h-10 rounded-full " />
         <div>

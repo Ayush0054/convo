@@ -5,7 +5,7 @@ import axios from "axios";
 import { getSender } from "../config/chatLogics";
 import ScrollableFeed from "react-scrollable-feed";
 
-function ChatContact({ fetchAgain }: { fetchAgain: any}) {
+function ChatContact({ fetchAgain , setShowContact }: { fetchAgain: any , setShowContact:any}) {
   const [loggedUser, setLoggedUser] = useState<any>({});
   const [loading, setLoading] = useState(false);
   const { user, selectedChat, setSelectedChat, chats, setChats, setSearch } =
@@ -25,6 +25,7 @@ function ChatContact({ fetchAgain }: { fetchAgain: any}) {
       );
       console.log(data);
       setChats(data);
+   
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -41,13 +42,14 @@ function ChatContact({ fetchAgain }: { fetchAgain: any}) {
   const handleClick = (chat:any) => {
     setSelectedChat(chat);
     // showContact(false);
+    setShowContact(false);
   }
   return (
     <div className="  ">
       {loading ? (
         <h1>loading....</h1>
       ) : (
-        <div  className=" flex object-contain h-[650px]  mb-5      "
+        <div  className=" flex object-contain md:h-[650px] h-[490px]  mb-5  md:mr-4     "
         style={{ scrollbarWidth: "none", flexDirection: "column" }} >
           {chats ? (
                   // @ts-ignore

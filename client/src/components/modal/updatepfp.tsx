@@ -95,13 +95,13 @@ console.log(user._id);
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+            <div className="relative w-auto my-6 mx-auto md:max-w-3xl max-w-xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-10">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col md:w-full w-72 bg-white outline-none focus:outline-none p-5 md:p-10">
                 {/*header*/}
                 <div className=" grid justify-items-center">
                   <h1 className=" font-bold ">Update image</h1>
-                  <form className=" flex" onSubmit={submitHandler}>
+                  <form className=" md:flex" onSubmit={submitHandler}>
                     <input
                       id="file_input"
                       type="file"
@@ -113,12 +113,12 @@ console.log(user._id);
                       className="block   focus:outline-none  p-2 m-3  text-sm    cursor-pointer dark:text-gray-700  "
                     />
                     {buttonLoading ?
-                         <button className=" bg-[#FD8D4E] m-5   rounded-lg p-2 drop-shadow-xl" disabled>
+                         <button className=" bg-[#FD8D4E] md:m-5 m-2  rounded-lg p-2 drop-shadow-xl" disabled>
                          loading...
                        </button>
                        :
 
-                      <button className=" bg-[#FD8D4E] m-5   rounded-lg p-2 drop-shadow-xl">
+                      <button className=" bg-[#FD8D4E] md:m-5 m-2  rounded-lg p-2 drop-shadow-xl">
                       {" "}
                       Update
                     </button>

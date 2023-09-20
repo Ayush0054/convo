@@ -12,7 +12,7 @@ function ChatBox({
 }) {
   const { selectedChat, user } = ChatState();
   return (
-    <div className=" p-3 md:ml-16  rounded-3xl     ">
+    <div className=" p-3  rounded-3xl     ">
       <SingleChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
     </div>
   );

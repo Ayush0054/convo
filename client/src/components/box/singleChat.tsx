@@ -167,7 +167,7 @@ function SingleChat({
                 </div>
               ) : (
                 <div
-                  className=" flex object-contain   h-[370px]   "
+                  className=" flex object-contain  md:h-[370px] md:w-[1400px] justify-between  h-[300px] w-[250px]   "
                   style={{ scrollbarWidth: "none", flexDirection: "column" }}
                 >
                   <ScrollableChat messages={messages} />
@@ -194,7 +194,7 @@ function SingleChat({
           >
             <input
               type="text"
-              className="shadow bg-[#fcefe9] mt-5 flex p-5 outline-none md:w-[1500px]  "
+              className="shadow bg-[#fcefe9] mt-5 flex p-5 outline-none  md:w-[1500px]  "
               placeholder="Enter a Message"
               onChange={typingHandler}
               value={newMessage}
