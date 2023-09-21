@@ -41,7 +41,7 @@ function Chat() {
               <div>
 
             
-            {search ? <SearchContact /> : <ChatContact fetchAgain={fetchAgain}  setShowContact={setShowContact} />}
+            {search ? <SearchContact setShowContact={setShowContact} /> : <ChatContact fetchAgain={fetchAgain}  setShowContact={setShowContact} />}
               </div>
           }
       

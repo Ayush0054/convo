@@ -5,7 +5,7 @@ import axios from "axios";
 import ResultContact from "./userAvatar/resultContact";
 import ScrollableFeed from "react-scrollable-feed";
 
-function SearchContact() {
+function SearchContact({ setShowContact }: { setShowContact: any}) {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -50,6 +50,7 @@ function SearchContact() {
       if (!chats.find((c: any) => c._id === data._id))
         setChats([data, ...chats]);
       setSelectedChat(data);
+      setShowContact(false);
     } catch (error) {
       console.log(error);
     }
