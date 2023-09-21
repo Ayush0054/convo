@@ -128,53 +128,53 @@ function SignUp() {
       <h1 className=" text-7xl text-center p-10 ">SignUp</h1>
       <div className=" flex justify-center items-center">
         <div className=" flex justify-between items-center bg-[#FFD7C0] ml-64 mr-64 h-auto rounded-lg shadow-2xl  max-w-5xl  ">
-          <div>
+          <div className="hidden md:block">
             <Lottie animationData={animation} style={style} className=" " />
           </div>
-          <div className=" p-8 m-8">
+          <div className=" md:p-8 md:m-8 m-4 p-4">
             <form
               className=" grid max-w-xs  items-center  "
               onSubmit={submitHandler}
             >
-              <h1 className="text-2xl">Name</h1>
+              <h1 className="md:text-2xl text-lg">Name</h1>
               <input
                 type="text"
                 value={signupData.name}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleInputChange("name", e.target.value)
                 }
-                className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
+                className=" bg-white border md:p-2 md:m-3 m-1 p-1 rounded-3xl focus:outline-none"
               />
-              <h1 className="text-2xl">Email</h1>
+              <h1 className="md:text-2xl text-lg">Email</h1>
               <input
                 type="email"
                 value={signupData.email}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleInputChange("email", e.target.value)
                 }
-                className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
+                className=" bg-white border md:p-2 md:m-3 m-1 p-1 rounded-3xl focus:outline-none"
               />
 
-              <h1 className="text-2xl">Password</h1>
+              <h1 className="md:text-2xl text-lg">Password</h1>
               <input
                 type="password"
                 value={signupData.password}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleInputChange("password", e.target.value)
                 }
-                className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
+                className=" bg-white border md:p-2 md:m-3 m-1 p-1  rounded-3xl focus:outline-none"
               />
-              <h1 className="text-2xl">Confirm Password</h1>
+              <h1 className="md:text-2xl text-lg">Confirm Password</h1>
               <input
                 type="password"
                 value={signupData.confirmPassword}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleInputChange("confirmPassword", e.target.value)
                 }
-                className=" bg-white border p-2 m-3  rounded-3xl focus:outline-none"
+                className=" bg-white border md:p-2 md:m-3 m-1 p-1 rounded-3xl focus:outline-none"
               />
 
-              <h1 className="text-2xl">Picture</h1>
+              <h1 className="md:text-2xl text-lg">Picture</h1>
 
               <input
                 id="file_input"
