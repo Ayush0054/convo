@@ -3,6 +3,7 @@ import { ChatState } from "../../context/chatProvider";
 import UserIcon from "../userAvatar/usericon";
 import axios from "axios";
 import ResultContact from "../userAvatar/resultContact";
+import ScrollableFeed from "react-scrollable-feed";
 
 function UpdateGroupChatModal({
   chat,
@@ -69,7 +70,7 @@ function UpdateGroupChatModal({
         },
       };
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `https://convo-aoru.onrender.com/api/user?search=${search}`,
         config
       );
       console.log(data);
@@ -97,7 +98,7 @@ function UpdateGroupChatModal({
         },
       };
       const { data } = await axios.put(
-        "http://localhost:5000/api/chat/groupadd",
+        "https://convo-aoru.onrender.com/api/chat/groupadd",
         {
           chatId: selectedChat._id,
           userId: userToAdd._id,
@@ -225,8 +226,8 @@ function UpdateGroupChatModal({
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-10">
+            <div className="relative w-auto my-6 mx-auto md:max-w-3xl max-w-xl">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col md:w-full w-96 bg-white outline-none focus:outline-none md:p-10 p-5 ">
                 <h1 className="  font-bold"> Group Name: {selectedChat.chatName}</h1>
                 <h1 className=" text-orange-500 font-semibold"> Group Admin: {selectedChat.groupAdmin.name}</h1>
                 <div className=" flex justify-center">
@@ -242,7 +243,7 @@ function UpdateGroupChatModal({
                   ))}
                 </div>
                 <div className=" ">
-                  <form action="" className=" flex justify-center items-center">
+                  <form action="" className=" grid md:flex justify-center items-center">
                     <input
                       type="text"
                       className=" p-3 outline-orange-500 bg-orange-50 rounded-sm "
@@ -250,7 +251,7 @@ function UpdateGroupChatModal({
                       onChange={(e) => setGroupName(e.target.value)}
                     />
                     <button
-                      className="  bg-[#FD8D4E] p-2 m-2 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="  bg-[#FD8D4E] p-2 m-2 text-white font-bold uppercase text-sm md:px-6 md:py-3 px-2 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={handleRename}
                     >
@@ -265,19 +266,30 @@ function UpdateGroupChatModal({
                       onChange={(e) => handleSearch(e.target.value)}
                     />
                   </form>
+                  <div
+        className=" flex object-contain md:h-[450px] h-[250px]    "
+        style={{ scrollbarWidth: "none", flexDirection: "column" }}
+      >
+                 {
+
+                   // @ts-ignore
+             <ScrollableFeed className="no-scrollbar">
                   {loading ? (
                     <div> loading</div>
                   ) : (
                     searchResults
-                      ?.slice(0, 5)
-                      .map((user: any) => (
+                    ?.slice(0, 5)
+                    .map((user: any) => (
                         <ResultContact
-                          key={user._id}
-                          user={user}
-                          handleFunction={() => handleAddUser(user)}
+                        key={user._id}
+                        user={user}
+                        handleFunction={() => handleAddUser(user)}
                         />
-                      ))
-                  )}
+                        ))
+                        )}
+                  </ScrollableFeed>
+                      }
+                      </div>
                 </div>
 
                 <button
