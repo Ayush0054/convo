@@ -155,14 +155,14 @@ function SingleChat({
                 />
               </div>
             )}
-            <div className=" p-10 ">
+            <div className=" p-10  ">
               {loading ? (
                 <div className=" grid items-center ">
                   <h1 className=" text-4xl">Loading</h1>
                   <Lottie
                     animationData={animation}
                     style={style}
-                    className=" flex items-center justify-center "
+                    className=" flex items-center justify-between "
                   />
                 </div>
               ) : (
@@ -189,12 +189,11 @@ function SingleChat({
           </div>
           <form
             onKeyDown={sendMessage}
-            
             className=" flex justify-between items-center gap-5"
           >
             <input
               type="text"
-              className="shadow bg-[#fcefe9] mt-5 flex p-5 outline-none  md:w-[1500px]  "
+              className="shadow bg-[#fcefe9] mt-5 flex p-5 outline-none  md:w-full  "
               placeholder="Enter a Message"
               onChange={typingHandler}
               value={newMessage}

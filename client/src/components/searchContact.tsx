@@ -27,7 +27,7 @@ function SearchContact({ setShowContact }: { setShowContact: any}) {
         config
       );
       setSearchResults(data);
-      console.log(data);
+      
     } catch (err) {
       console.log(err);
     }
@@ -45,7 +45,7 @@ function SearchContact({ setShowContact }: { setShowContact: any}) {
         { userId },
         config
       );
-      console.log(data);
+      
 
       if (!chats.find((c: any) => c._id === data._id))
         setChats([data, ...chats]);

@@ -32,8 +32,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-body{
-
+body {
 }
 .shadow {
   box-shadow: 4px 4px 4px rgba(255, 185, 146, 0.67);

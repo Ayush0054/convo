@@ -79,7 +79,7 @@ export default function GroupChatModal() {
   return (
     <>
       <button
-        className=" rounded-lg border border-gray-300 bg-[#FD8D4E] p-2 m-2 "
+        className=" rounded-lg border border-orange-500 text-orange-500 hover:text-white hover:bg-[#FD8D4E] bg-white p-2 m-2 "
         type="button"
         onClick={() => setShowModal(true)}
       >
