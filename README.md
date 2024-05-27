@@ -37,8 +37,4 @@ chat application made using mern stack
 
 
 
-updates coming
-- typescript refactoring
-- rate limit feature / caching
-- webrtc
-- responsiveness
+
